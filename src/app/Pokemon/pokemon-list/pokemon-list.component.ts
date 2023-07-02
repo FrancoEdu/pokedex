@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Result, Root } from 'src/model/BasePokemonResponse';
+import { Result, BasePokemonReponse } from 'src/model/BasePokemonResponse';
 import { Pokemon } from 'src/model/pokemon';
 import { PokemonService } from 'src/service/pokemon.service';
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Pokemon } from 'src/model/pokemon';
 import { Observable, map, tap } from 'rxjs';
-import { Root } from 'src/model/BasePokemonResponse';
+import { BasePokemonReponse } from 'src/model/BasePokemonResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,9 @@ export class PokemonService {
     private http: HttpClient
   ) { }
 
-  getPokemonListBase(): Observable<Root>{
+  getPokemonListBase(): Observable<BasePokemonReponse>{
     return this.http.get(`${this.apiURL}?limit=100000&offset=0`).pipe(
-      map((response) => response as Root)
+      map((response) => response as BasePokemonReponse)
       // tap((data) => console.log(data))
     )
   }
