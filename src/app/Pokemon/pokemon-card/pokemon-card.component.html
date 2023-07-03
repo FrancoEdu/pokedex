@@ -1,1 +1,21 @@
-<p>pokemon-card works!</p>
+<div class="pokemon-card">
+  <div class="title">
+    <strong> #{{pokemon.id}} - {{pokemon.name}} </strong>
+  </div>
+  <div class="image">
+    <img [src]="pokemon.image" alt="{{pokemon.name}}">
+  </div>
+  <div class="atributtes">
+    <table class="table">
+      <thead>
+        <th> Attributes </th>
+      </thead>
+      <tbody>
+        <tr><td>Base Experience: {{pokemon.base_experience}}</td></tr>
+        <tr><td>Height: {{pokemon.height}}</td></tr>
+        <tr><td>Weight: {{pokemon.weight}}</td></tr>
+        <tr><td>Order: {{pokemon.order}}</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -9,7 +9,7 @@ import { PokemonService } from 'src/service/pokemon.service';
   styleUrls: ['./pokemon-list.component.sass']
 })
 export class PokemonListComponent implements OnInit{
-
+  private pokemonsImage:string = 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/'
   private results : Result[] = [];
   pokemons: Pokemon[] = [];
 
@@ -24,9 +24,32 @@ export class PokemonListComponent implements OnInit{
       this.results = data.results
       for(let i = 0; i < this.results.length; i++){
         this.pokemonService.getPokemon(this.results[i].name).subscribe(data => {
-          this.pokemons.push(data)
+          this.pokemons.push({
+            base_experience: data.base_experience,
+            height: data.height,
+            id: data.id,
+            name: data.name,
+            order: data.order,
+            weight: data.weight,
+            image: this.getImage(data.id)
+          })
         })
       }
     })
+  }
+
+  getImage(id:number):string {
+    let imageURL = ""
+    const idString = id.toString();
+
+    if(idString.length == 3){
+      imageURL = `${this.pokemonsImage}${idString}.png`;
+    } else if(idString.length == 2){
+      imageURL = `${this.pokemonsImage}0${idString}.png`;
+    }else {
+      imageURL = `${this.pokemonsImage}00${idString}.png`;
+    }
+
+    return imageURL
   }
 }

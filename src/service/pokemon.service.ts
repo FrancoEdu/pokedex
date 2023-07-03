@@ -16,7 +16,7 @@ export class PokemonService {
   ) { }
 
   getPokemonListBase(): Observable<BasePokemonReponse>{
-    return this.http.get(`${this.apiURL}?limit=100000&offset=0`).pipe(
+    return this.http.get(`${this.apiURL}?limit=256&offset=0`).pipe(
       map((response) => response as BasePokemonReponse)
       // tap((data) => console.log(data))
     )
